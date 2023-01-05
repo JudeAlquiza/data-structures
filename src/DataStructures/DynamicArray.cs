@@ -35,7 +35,7 @@ public class DynamicArray<T> where T : struct
     {
         if (Size == _capacity)
         {
-            var newStaticArray = new T[2 * _capacity];
+            var newStaticArray = new T[_capacity == 0 ? 1 : 2 * _capacity];
 
             for (var i = 0; i < Size; i++)
             {
@@ -69,6 +69,11 @@ public class DynamicArray<T> where T : struct
 
     public void RemoveAtIndex(int index)
     {
+        if (index >= Size || index < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(index), "Index is out of bounds of the array");
+        }
+
         for (var i = index; i < Size - 1; i++)
         {
             _staticArray[i] = _staticArray[i + 1];
@@ -92,5 +97,15 @@ public class DynamicArray<T> where T : struct
         }
 
         RemoveAtIndex(indexToRemove);
+    }
+
+    public void Clear()
+    {
+        for (var i = 0; i < Size; i++)
+        {
+            _staticArray[i] = default;
+        }
+
+        Size = 0;
     }
 }
