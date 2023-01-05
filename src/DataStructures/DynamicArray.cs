@@ -67,21 +67,33 @@ public class DynamicArray<T> where T : struct
         return -1;
     }
 
-    public void RemoveAtIndex(int index)
+    public T RemoveAtIndex(int indexToRemove)
     {
-        if (index >= Size || index < 0)
+        if (indexToRemove >= Size || indexToRemove < 0)
         {
-            throw new ArgumentOutOfRangeException(nameof(index), "Index is out of bounds of the array");
+            throw new ArgumentOutOfRangeException(nameof(indexToRemove), "Index is out of bounds of the array");
         }
 
-        for (var i = index; i < Size - 1; i++)
+        var removedElement = _staticArray[indexToRemove];
+
+        var newStaticArray = new T[Size - 1];
+
+        for (int i = 0, j = 0; i < Size; i++, j++)
         {
-            _staticArray[i] = _staticArray[i + 1];
+            if (i == indexToRemove)
+            {
+                j -= 1;
+            }
+            else
+            {
+                newStaticArray[j] = _staticArray[i];
+            }
         }
 
-        _staticArray[Size - 1] = default;
-
+        _staticArray = newStaticArray;
         Size -= 1;
+
+        return removedElement;
     }
 
     public void Remove(T element)
