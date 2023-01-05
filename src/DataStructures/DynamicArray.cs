@@ -67,6 +67,8 @@ public class DynamicArray<T> where T : struct
         return -1;
     }
 
+    public bool Contains(T element) => IndexOf(element) != -1;
+
     public T RemoveAtIndex(int indexToRemove)
     {
         if (indexToRemove >= Size || indexToRemove < 0)
@@ -96,19 +98,18 @@ public class DynamicArray<T> where T : struct
         return removedElement;
     }
 
-    public void Remove(T element)
+    public bool Remove(T element)
     {
-        var indexToRemove = 0;
-
         for (var i = 0; i < Size; i++)
         {
             if (_staticArray[i].Equals(element))
             {
-                indexToRemove =  i;
+                RemoveAtIndex(i);
+                return true;
             }
         }
 
-        RemoveAtIndex(indexToRemove);
+        return false;
     }
 
     public void Clear()
