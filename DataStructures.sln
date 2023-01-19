@@ -7,9 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{ADC9DE9E-51C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{6427BC13-C24A-4C92-B000-2F4C5811A927}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Console", "src\Console\Console.csproj", "{975EF63E-1531-4696-9EF0-4455D1CAC393}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructures", "src\DataStructures\DataStructures.csproj", "{44EC659C-3782-43DF-A0E7-C8642A6EE295}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataStructures", "src\DataStructures\DataStructures.csproj", "{44EC659C-3782-43DF-A0E7-C8642A6EE295}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{975EF63E-1531-4696-9EF0-4455D1CAC393}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{975EF63E-1531-4696-9EF0-4455D1CAC393}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{975EF63E-1531-4696-9EF0-4455D1CAC393}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{975EF63E-1531-4696-9EF0-4455D1CAC393}.Release|Any CPU.Build.0 = Release|Any CPU
 		{44EC659C-3782-43DF-A0E7-C8642A6EE295}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{44EC659C-3782-43DF-A0E7-C8642A6EE295}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44EC659C-3782-43DF-A0E7-C8642A6EE295}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -30,7 +24,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{975EF63E-1531-4696-9EF0-4455D1CAC393} = {ADC9DE9E-51C6-4E83-B9E5-6FFB28AB2671}
 		{44EC659C-3782-43DF-A0E7-C8642A6EE295} = {ADC9DE9E-51C6-4E83-B9E5-6FFB28AB2671}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

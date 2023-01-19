@@ -1,6 +1,8 @@
-﻿namespace DataStructures;
+﻿using System.Collections;
 
-public class DynamicArray<T> where T : struct
+namespace DataStructures.DynamicArray;
+
+public class DynamicArray<T> : IEnumerable<T> where T : struct
 {
     private T[] _staticArray;
     private readonly int _capacity;
@@ -120,5 +122,15 @@ public class DynamicArray<T> where T : struct
         }
 
         Size = 0;
+    }
+
+    public IEnumerator<T> GetEnumerator()
+    {
+        return _staticArray.Cast<T>().GetEnumerator();
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
     }
 }
