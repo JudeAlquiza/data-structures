@@ -28,11 +28,52 @@ public class DynamicArray<T> : IEnumerable<T> where T : struct
 
     public void SetAtIndex(int index, T element) => _staticArray[index] = element;
 
+    /// <summary>
+    /// Time  Complexity: O(1)
+    ///
+    /// Note:
+    ///   There will be times when the array is at capacity
+    ///   and a new array needs to be created in this case with
+    ///   double the capacity, after that, elements will need to be
+    ///   copied from the old array to the new array before the
+    ///   new element is inserted. This operation will at worst be
+    ///   O(n) and the
+    ///   Amortized Time Complexity: O(1) 
+    ///
+    ///   Also were gonna need to allocate memory for the new array
+    ///   hence we're gonna have
+    ///     Space Complexity: O(n)
+    /// </summary>
+    /// <param name="element"></param>
     public void Append(T element)
     {
         InsertAtIndex(Size, element);
     }
 
+    /// <summary>
+    /// If index is not at the end of the array then
+    /// Time  Complexity: O(n)
+    ///
+    /// If index is at the end of the array then
+    /// Time  Complexity: O(1)
+    ///
+    /// Note:
+    ///   There will be times when the array is at capacity
+    ///   and a new array needs to be created in this case with
+    ///   double the capacity, after that, elements will need to be
+    ///   copied from the old array to the new array before the
+    ///   new element is inserted. This operation will at worst be
+    ///   O(n) and the
+    ///   Amortized Time Complexity:
+    ///     O(1) if index is at the end of the array
+    ///     O(n) if index is not at the end of the array
+    ///
+    ///   Also were gonna need to allocate memory for the new array
+    ///   hence we're gonna have
+    ///     Space Complexity: O(n)
+    /// </summary>
+    /// <param name="index"></param>
+    /// <param name="element"></param>
     public void InsertAtIndex(int index, T element)
     {
         if (Size == _capacity)
@@ -56,6 +97,11 @@ public class DynamicArray<T> : IEnumerable<T> where T : struct
         Size += 1;
     }
 
+    /// <summary>
+    /// Time  Complexity: O(n)
+    /// </summary>
+    /// <param name="element"></param>
+    /// <returns></returns>
     public int IndexOf(T element)
     {
         for (var i = 0; i < Size; i++)
@@ -69,8 +115,21 @@ public class DynamicArray<T> : IEnumerable<T> where T : struct
         return -1;
     }
 
+
+    /// <summary>
+    /// Time  Complexity: O(n)
+    /// </summary>
+    /// <param name="element"></param>
+    /// <returns></returns>
     public bool Contains(T element) => IndexOf(element) != -1;
 
+    /// <summary>
+    /// Time  Complexity: O(n)
+    /// Space Complexity: O(n)
+    /// </summary>
+    /// <param name="indexToRemove"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentOutOfRangeException"></exception>
     public T RemoveAtIndex(int indexToRemove)
     {
         if (indexToRemove >= Size || indexToRemove < 0)
@@ -100,6 +159,12 @@ public class DynamicArray<T> : IEnumerable<T> where T : struct
         return removedElement;
     }
 
+    /// <summary>
+    /// Time  Complexity: O(n)
+    /// Space Complexity: O(n)
+    /// </summary>
+    /// <param name="element"></param>
+    /// <returns></returns>
     public bool Remove(T element)
     {
         for (var i = 0; i < Size; i++)
@@ -114,6 +179,9 @@ public class DynamicArray<T> : IEnumerable<T> where T : struct
         return false;
     }
 
+    /// <summary>
+    /// Time  Complexity: O(n)
+    /// </summary>
     public void Clear()
     {
         for (var i = 0; i < Size; i++)
